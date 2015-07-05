@@ -1,0 +1,30 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "pebble@thiems.eu",
+    "longName": "RT42",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "fonts/hoog0553.ttf",
+                "name": "RT_FONT_26",
+                "type": "font"
+            },
+            {
+                "file": "images/RT42.png",
+                "name": "RT_IMAGE_42",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "RT42",
+    "uuid": "3d34284b-13a4-4961-81fb-d2ebe234410e",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
