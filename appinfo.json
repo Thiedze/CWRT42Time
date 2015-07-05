@@ -1,7 +1,10 @@
 {
-    "appKeys": {},
+    "appKeys": {
+        "KEY_CONDITIONS": 1,
+        "KEY_TEMPERATURE": 0
+    },
     "capabilities": [
-        ""
+        "location"
     ],
     "companyName": "pebble@thiems.eu",
     "longName": "RT42",
@@ -22,9 +25,12 @@
     },
     "sdkVersion": "3",
     "shortName": "RT42",
+    "targetPlatforms": [
+        "basalt"
+    ],
     "uuid": "3d34284b-13a4-4961-81fb-d2ebe234410e",
     "versionLabel": "1.0",
     "watchapp": {
-        "watchface": false
+        "watchface": true
     }
 }
