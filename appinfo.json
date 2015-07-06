@@ -12,6 +12,11 @@
     "resources": {
         "media": [
             {
+                "file": "images/RT42_Circular_Integral.png",
+                "name": "RT_36",
+                "type": "png"
+            },
+            {
                 "file": "fonts/hoog0553.ttf",
                 "name": "RT_FONT_26",
                 "type": "font"

@@ -1,4 +1,6 @@
 #include "RT42.h"
+#include "RTTimeSign.h"
+#include "RTWeather.h"
 
 static void convert_to_rt_42_time(time_t t, char* buf) {
   unsigned int index = MAX_RT_LENGTH;
@@ -64,71 +66,31 @@ static void set_and_add_time_layer(){
   layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(time_layer));
 }
 
-static void set_and_add_weather_layer() {
-  weather_layer = text_layer_create(GRect(60, 150, 144, 25));
-  text_layer_set_background_color(weather_layer, GColorClear);
-  text_layer_set_text_color(weather_layer, RTColor);
-  text_layer_set_text_alignment(weather_layer, GTextAlignmentLeft);
-  text_layer_set_text(weather_layer, "Loading...");
-  layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(weather_layer));
-}
-
 static void main_window_load(Window *window) {
   rt_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_RT_FONT_26));
   
   set_and_add_background();
   set_and_add_rt_42_time_layer();
   set_and_add_time_layer();
-  set_and_add_weather_layer();
+  
+  //init_rt_time_signs(RT_Time_Signs);
+  //init_rt_time_layers(RT_Time_Layers, RT_Time_Signs, main_window);
+  init_weather_layer(main_window);
   
   update_rt_42_time();
   update_normale_time_and_date();
 }
 
-static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
-  static char temperature_buffer[8];
-  static char conditions_buffer[32];
-  static char weather_layer_buffer[32];
-  Tuple *t = dict_read_first(iterator);
-
-  while(t != NULL) {
-    switch(t->key) {
-    case KEY_TEMPERATURE:
-      snprintf(temperature_buffer, sizeof(temperature_buffer), "%d °C", (int)t->value->int32);
-      break;
-    case KEY_CONDITIONS:
-      snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", t->value->cstring);
-      break;
-    default:
-      APP_LOG(APP_LOG_LEVEL_ERROR, "Key %d not recognized!", (int)t->key);
-      break;
-    }
-
-    t = dict_read_next(iterator);
-  }
-  
-  snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s %s", temperature_buffer, conditions_buffer);
-  text_layer_set_text(weather_layer, weather_layer_buffer);
-}
-
-static void inbox_dropped_callback(AppMessageResult reason, void *context) {
-  APP_LOG(APP_LOG_LEVEL_ERROR, "Message dropped!");
-}
-
-static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context) {
-  APP_LOG(APP_LOG_LEVEL_ERROR, "Outbox send failed!");
-}
-
-static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
-  APP_LOG(APP_LOG_LEVEL_INFO, "Outbox send success!");
-}
-
 static void main_window_unload(Window *window) {
   text_layer_destroy(time_layer);
   text_layer_destroy(rt_42_time_layer);
-  text_layer_destroy(weather_layer);
   gbitmap_destroy(background_bitmap);
   bitmap_layer_destroy(background_layer);
+  
+  //destroy_rt_time_signs(RT_Time_Signs);
+  //destroy_rt_time_layers(RT_Time_Layers);
+  destroy_weather_layer(weather_layer);
+  destroy_rt_time_signs(RT_Time_Signs);
 }
 
 static void init_main_window() {
@@ -144,6 +106,8 @@ static void init_main_window() {
 static void init(void) {
   init_main_window();
   tick_timer_service_subscribe(SECOND_UNIT, ticker_rt_42_time);
+  
+  init_rt_time_signs(RT_Time_Signs);
   
   // Register callbacks
   app_message_register_inbox_received(inbox_received_callback);
