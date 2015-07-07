@@ -1,18 +1,7 @@
 #include <pebble.h>
-#include <pebble_fonts.h>
 #include "RTConstants.h"
 
-Window *main_window;
-TextLayer *rt_42_time_layer;
-TextLayer *time_layer;
-BitmapLayer *background_layer;
-GBitmap *background_bitmap;
-
-static char time_buffer[] = "00.00.0000 00:00:00";
-
-static GFont rt_font;
-
-static const wchar_t RT42[BASE42] = {
+const char RT42_SIGNS[BASE42] = {
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 
@@ -23,4 +12,7 @@ static const wchar_t RT42[BASE42] = {
   's',//\xDF',
   '@'};
 
-static char buffer[MAX_RT_LENGTH + 1];
+extern void init_rt_42_time_layer(TextLayer *rt_42_time_layer, Window *main_window, GFont rt_font);
+extern void destroy_rt_42_time_layer(TextLayer *rt_42_time_layer);
+extern void convert_to_rt_42_time(time_t t, char* buf);
+extern void update_rt_42_time(TextLayer *rt_42_time_layer);

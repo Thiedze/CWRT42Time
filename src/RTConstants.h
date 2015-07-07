@@ -3,3 +3,4 @@
 #define RTColor GColorFromRGB(255, 90, 10)
 #define KEY_TEMPERATURE 0
 #define KEY_CONDITIONS 1
+#define USE_TIME_LAYER 1
