@@ -12,6 +12,11 @@
     "resources": {
         "media": [
             {
+                "file": "images/RT_A.png",
+                "name": "RT_10",
+                "type": "png"
+            },
+            {
                 "file": "images/RT42_Circular_Integral.png",
                 "name": "RT_36",
                 "type": "png"

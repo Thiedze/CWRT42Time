@@ -1,10 +1,8 @@
 #include "RTWeather.h"
-
-TextLayer *weather_layer_cache;
+#include "RTConstants.h"
   
-void init_weather_layer(TextLayer *weather_layer, Window *main_window) {
+void init_weather_layer() {
   weather_layer = text_layer_create(GRect(0, 150, 144, 25));
-  weather_layer_cache = weather_layer;
   text_layer_set_background_color(weather_layer, GColorClear);
   text_layer_set_text_color(weather_layer, RTColor);
   text_layer_set_text_alignment(weather_layer, GTextAlignmentRight);
@@ -12,7 +10,7 @@ void init_weather_layer(TextLayer *weather_layer, Window *main_window) {
   layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(weather_layer));
 }
 
-void destroy_weather_layer(TextLayer *weather_layer) {
+void destroy_weather_layer() {
   text_layer_destroy(weather_layer);
 }
   
@@ -39,7 +37,7 @@ void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   }
   
   snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s %s", temperature_buffer, conditions_buffer);
-  text_layer_set_text(weather_layer_cache, weather_layer_buffer);
+  text_layer_set_text(weather_layer, weather_layer_buffer);
 }
 
 void inbox_dropped_callback(AppMessageResult reason, void *context) {

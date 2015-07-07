@@ -1,9 +1,10 @@
-#include "RTTime.h"
-  
 #include "RTTimeSign.h"
 #include "RTWeather.h"
 #include "RTTimeLayer.h"
+#include "RTConstants.h"
 
+static char time_buffer[] = "00.00.0000 00:00:00";
+  
 void update_normale_time_and_date() {
   time_t temp = time(0); 
   struct tm *tick_time = localtime(&temp);
@@ -14,7 +15,11 @@ void update_normale_time_and_date() {
 }
 
 void ticker_rt_42_time(struct tm *tick_time, TimeUnits units_changed) {
-  update_rt_42_time(rt_42_time_layer);
+  if (USE_TIME_LAYER == 1)
+    update_rt_42_time_layer();
+  else
+    update_rt_42_time_signs();
+  
   update_normale_time_and_date();
   
   // Get weather update every 30 minutes
@@ -43,21 +48,24 @@ void set_and_add_time_layer(){
 
 void main_window_load(Window *window) {
   rt_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_RT_FONT_26));
-  
   set_and_add_background();
   set_and_add_time_layer();
   
   if (USE_TIME_LAYER == 1) {
-    init_rt_42_time_layer(rt_42_time_layer, main_window, rt_font);
+    init_rt_42_time_layer();
   }
   else {
-    init_rt_time_signs(rt_time_signs);
-    init_rt_time_layers(rt_time_layers, rt_time_signs, main_window); 
+    init_rt_time_signs();
+    init_rt_time_layers(); 
   }
   
   init_weather_layer(weather_layer ,main_window);
   
-  update_rt_42_time(rt_42_time_layer);
+  if (USE_TIME_LAYER == 1)
+    update_rt_42_time_layer(); 
+  else
+    update_rt_42_time_signs(); 
+  
   update_normale_time_and_date();
 }
 
@@ -67,14 +75,14 @@ void main_window_unload(Window *window) {
   bitmap_layer_destroy(background_layer);
   
    if (USE_TIME_LAYER == 1) {
-    destroy_rt_42_time_layer(rt_42_time_layer);
+    destroy_rt_42_time_layer();
   }
   else {
-    destroy_rt_time_signs(rt_time_signs);
-    destroy_rt_time_layers(rt_time_layers); 
+    destroy_rt_time_layers(); 
+    destroy_rt_time_signs();
   }
   
-  destroy_weather_layer(weather_layer);
+  destroy_weather_layer();
 }
 
 void init_main_window() {
@@ -91,8 +99,6 @@ void init(void) {
   init_main_window();
   tick_timer_service_subscribe(SECOND_UNIT, ticker_rt_42_time);
   
-  init_rt_time_signs(rt_time_signs);
-  
   // Register callbacks
   app_message_register_inbox_received(inbox_received_callback);
   app_message_register_inbox_dropped(inbox_dropped_callback);
@@ -107,7 +113,7 @@ void deinit(void) {
   window_destroy(main_window);
 }
   
-int main(void) {  
+int main(void) {
   init();
 	app_event_loop();
 	deinit();

@@ -1,6 +1,18 @@
 #include "RTTimeLayer.h"
+#include "RTConstants.h"
   
-void init_rt_42_time_layer(TextLayer *rt_42_time_layer, Window *main_window, GFont rt_font) {
+const char RT42_SIGNS[BASE42] = {
+  '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
+  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+  'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 
+  '~',//∮ \x222E', 
+  'a',//\xC4',
+  'o',//\xD6',
+  'u',//\xDC',
+  's',//\xDF',
+  '@'};
+  
+void init_rt_42_time_layer() {
   rt_42_time_layer = text_layer_create(GRect(10, 0, 144, 55));
   text_layer_set_font(rt_42_time_layer, rt_font);
   text_layer_set_background_color(rt_42_time_layer, GColorClear);
@@ -10,13 +22,14 @@ void init_rt_42_time_layer(TextLayer *rt_42_time_layer, Window *main_window, GFo
   layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(rt_42_time_layer));
 }
 
-void destroy_rt_42_time_layer(TextLayer *rt_42_time_layer) {
+void destroy_rt_42_time_layer() {
   text_layer_destroy(rt_42_time_layer);
 }
 
-void convert_to_rt_42_time(time_t t, char* buf) {
+void convert_to_rt_42_time(char* buf) {
+  time_t t = time(0);
   unsigned int index = MAX_RT_LENGTH;
-  t =  t - 943016400;
+  t =  t - 943016400;  
   while (index != 0)
   {
     buf[--index] = RT42_SIGNS[t%BASE42];
@@ -24,9 +37,12 @@ void convert_to_rt_42_time(time_t t, char* buf) {
   }
 }
 
-void update_rt_42_time(TextLayer *rt_42_time_layer) {
-  char buffer[MAX_RT_LENGTH];
-  time_t t = time(0);
-  convert_to_rt_42_time(t, buffer);
+void update_rt_42_time_layer() {
+  buffer[MAX_RT_LENGTH] = 0;
+  convert_to_rt_42_time(buffer);
+  
+  if (rt_42_time_layer == NULL) 
+    APP_LOG(APP_LOG_LEVEL_INFO, "rt_42_time_layer is null");
+  
   text_layer_set_text(rt_42_time_layer, buffer);
 }
