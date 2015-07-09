@@ -1,5 +1,5 @@
 #include "RTWeather.h"
-#include "RTConstants.h"
+#include "RTConstantsAndVariables.h"
   
 void init_weather_layer() {
   weather_layer = text_layer_create(GRect(0, 150, 144, 25));

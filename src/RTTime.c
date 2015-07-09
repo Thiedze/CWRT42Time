@@ -1,7 +1,7 @@
 #include "RTTimeSign.h"
 #include "RTWeather.h"
 #include "RTTimeLayer.h"
-#include "RTConstants.h"
+#include "RTConstantsAndVariables.h"
 
 static char time_buffer[] = "00.00.0000 00:00:00";
   
