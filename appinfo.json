@@ -12,6 +12,36 @@
     "resources": {
         "media": [
             {
+                "file": "images/tesla-coil (1).png",
+                "name": "RT_TESLA_COIL",
+                "type": "png"
+            },
+            {
+                "file": "images/SS.png",
+                "name": "RT_SS",
+                "type": "png"
+            },
+            {
+                "file": "images/at.png",
+                "name": "RT_AT",
+                "type": "png"
+            },
+            {
+                "file": "images/OE.png",
+                "name": "RT_OE",
+                "type": "png"
+            },
+            {
+                "file": "images/UE.png",
+                "name": "RT_UE",
+                "type": "png"
+            },
+            {
+                "file": "images/AE.png",
+                "name": "RT_AE",
+                "type": "png"
+            },
+            {
                 "file": "images/Circular_Integral.png",
                 "name": "RT_Circular_Integral",
                 "type": "png"
@@ -195,6 +225,16 @@
                 "file": "images/0.png",
                 "name": "RT_0",
                 "type": "png"
+            },
+            {
+                "file": "fonts/hoog0553.ttf",
+                "name": "RT_FONT_24",
+                "type": "font"
+            },
+            {
+                "file": "fonts/hoog0553.ttf",
+                "name": "RT_FONT_20",
+                "type": "font"
             },
             {
                 "file": "fonts/hoog0553.ttf",

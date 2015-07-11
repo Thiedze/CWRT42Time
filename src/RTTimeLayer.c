@@ -1,5 +1,6 @@
-#include "RTTimeLayer.h"
 #include "RTConstantsAndVariables.h"
+#include "RTTimeLayer.h"
+#include "RTFonts.h"
   
 const char RT42_SIGNS[BASE42] = {
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
@@ -12,12 +13,17 @@ const char RT42_SIGNS[BASE42] = {
   's',//\xDF',
   '@'};
   
-void init_rt_42_time_layer() {
+void init_rt_42_time_layer(Window *main_window) {
   rt_42_time_layer = text_layer_create(GRect(10, 0, 144, 55));
-  text_layer_set_font(rt_42_time_layer, rt_font);
+  text_layer_set_font(rt_42_time_layer, rt_font_26);
   text_layer_set_background_color(rt_42_time_layer, GColorClear);
-  text_layer_set_text_color(rt_42_time_layer, RTColor);
   text_layer_set_text_alignment(rt_42_time_layer, GTextAlignmentLeft);
+  
+#ifdef PBL_PLATFORM_BASALT
+  text_layer_set_text_color(rt_42_time_layer, RTColor);
+#else
+  text_layer_set_text_color(rt_42_time_layer, GColorBlack);
+#endif
   
   layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(rt_42_time_layer));
 }

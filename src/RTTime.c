@@ -1,26 +1,19 @@
+#include "RTConstantsAndVariables.h"
+#include "RTTime.h"
 #include "RTTimeSign.h"
 #include "RTWeather.h"
 #include "RTTimeLayer.h"
-#include "RTConstantsAndVariables.h"
-
-static char time_buffer[] = "00.00.0000 00:00:00";
+#include "RTNormalTime.h"
+#include "RTBluetooth.h"
+#include "RTFonts.h"
   
-void update_normale_time_and_date() {
-  time_t temp = time(0); 
-  struct tm *tick_time = localtime(&temp);
-
-  strftime(time_buffer, sizeof(time_buffer), "%d.%m.%Y %H:%M:%S", tick_time);
-  
-  text_layer_set_text(time_layer, time_buffer);
-}
-
 void ticker_rt_42_time(struct tm *tick_time, TimeUnits units_changed) {
   if (USE_TIME_LAYER == 1)
     update_rt_42_time_layer();
   else
     update_rt_42_time_signs();
   
-  update_normale_time_and_date();
+  update_normal_time_and_date_layers();
   
   // Get weather update every 30 minutes
   if(tick_time->tm_min % 30 == 0) {
@@ -38,43 +31,38 @@ void set_and_add_background() {
   layer_add_child(window_get_root_layer(main_window), bitmap_layer_get_layer(background_layer));
 }
 
-void set_and_add_time_layer(){
-  time_layer = text_layer_create(GRect(10, 30, 110, 20));
-  text_layer_set_text_color(time_layer, GColorBlack);
-  text_layer_set_text(time_layer, time_buffer);
-  
-  layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(time_layer));
-}
-
 void main_window_load(Window *window) {
-  rt_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_RT_FONT_26));
+  init_fonts();
   set_and_add_background();
-  set_and_add_time_layer();
+  
+  init_bluetooth_layer(main_window);
+  init_normal_time_and_date_layers(main_window);
   
   if (USE_TIME_LAYER == 1) {
-    init_rt_42_time_layer();
+    init_rt_42_time_layer(main_window);
   }
   else {
     init_rt_time_signs();
-    init_rt_time_layers(); 
+    init_rt_time_layers(main_window); 
   }
   
-  init_weather_layer(weather_layer ,main_window);
+  init_weather_layer(main_window);
   
   if (USE_TIME_LAYER == 1)
     update_rt_42_time_layer(); 
   else
     update_rt_42_time_signs(); 
   
-  update_normale_time_and_date();
+  update_bluetooth_layer();
+  update_normal_time_and_date_layers();
 }
 
 void main_window_unload(Window *window) {
-  text_layer_destroy(time_layer);
+  
   gbitmap_destroy(background_bitmap);
   bitmap_layer_destroy(background_layer);
   
-   if (USE_TIME_LAYER == 1) {
+  if (USE_TIME_LAYER == 1) {
     destroy_rt_42_time_layer();
   }
   else {
@@ -82,7 +70,9 @@ void main_window_unload(Window *window) {
     destroy_rt_time_signs();
   }
   
+  destroy_normal_time_and_date_layers();
   destroy_weather_layer();
+  destroy_bluetooth_layer();
 }
 
 void init_main_window() {
@@ -99,14 +89,13 @@ void init(void) {
   init_main_window();
   tick_timer_service_subscribe(SECOND_UNIT, ticker_rt_42_time);
   
-  // Register callbacks
   app_message_register_inbox_received(inbox_received_callback);
   app_message_register_inbox_dropped(inbox_dropped_callback);
   app_message_register_outbox_failed(outbox_failed_callback);
   app_message_register_outbox_sent(outbox_sent_callback);
-  
-  // Open AppMessage
   app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
+  
+  bluetooth_connection_service_subscribe(bluetooth_callback);  
 }
  
 void deinit(void) {

@@ -1,12 +1,18 @@
-#include "RTWeather.h"
 #include "RTConstantsAndVariables.h"
+#include "RTWeather.h"
   
-void init_weather_layer() {
+void init_weather_layer(Window *main_window) {
   weather_layer = text_layer_create(GRect(0, 150, 144, 25));
   text_layer_set_background_color(weather_layer, GColorClear);
-  text_layer_set_text_color(weather_layer, RTColor);
   text_layer_set_text_alignment(weather_layer, GTextAlignmentRight);
   text_layer_set_text(weather_layer, "Loading...");
+  
+#ifdef PBL_PLATFORM_BASALT
+  text_layer_set_text_color(weather_layer, RTColor);
+#else
+  text_layer_set_text_color(weather_layer, GColorBlack);
+#endif
+  
   layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(weather_layer));
 }
 

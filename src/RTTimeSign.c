@@ -1,5 +1,5 @@
-#include <RTTimeSign.h>
 #include "RTConstantsAndVariables.h"
+#include "RTTimeSign.h"
 
 void init_rt_time_signs() {
   rt_time_signs[0] = gbitmap_create_with_resource(RESOURCE_ID_RT_0);
@@ -41,11 +41,11 @@ void init_rt_time_signs() {
   rt_time_signs[35] = gbitmap_create_with_resource(RESOURCE_ID_RT_Z);
   
   rt_time_signs[36] = gbitmap_create_with_resource(RESOURCE_ID_RT_Circular_Integral);
-  rt_time_signs[37] = gbitmap_create_with_resource(RESOURCE_ID_RT_5);
-  rt_time_signs[38] = gbitmap_create_with_resource(RESOURCE_ID_RT_5);
-  rt_time_signs[39] = gbitmap_create_with_resource(RESOURCE_ID_RT_5);
-  rt_time_signs[40] = gbitmap_create_with_resource(RESOURCE_ID_RT_5);
-  rt_time_signs[41] = gbitmap_create_with_resource(RESOURCE_ID_RT_5);
+  rt_time_signs[37] = gbitmap_create_with_resource(RESOURCE_ID_RT_AE);
+  rt_time_signs[38] = gbitmap_create_with_resource(RESOURCE_ID_RT_OE);
+  rt_time_signs[39] = gbitmap_create_with_resource(RESOURCE_ID_RT_UE);
+  rt_time_signs[40] = gbitmap_create_with_resource(RESOURCE_ID_RT_SS);
+  rt_time_signs[41] = gbitmap_create_with_resource(RESOURCE_ID_RT_AT);
 }
 
 void destroy_rt_time_signs() {
@@ -57,7 +57,7 @@ void destroy_rt_time_signs() {
   }
 }
 
-void init_rt_time_layers() {
+void init_rt_time_layers(Window *main_window) {
   int index = 0;
   
   for (index = 0; index < MAX_RT_LENGTH; index++) {
