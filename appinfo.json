@@ -6,11 +6,221 @@
     "capabilities": [
         "location"
     ],
-    "companyName": "pebble@thiems.eu",
-    "longName": "RT42",
+    "companyName": "Thiemperium",
+    "longName": "RT 42 Time",
     "projectType": "native",
     "resources": {
         "media": [
+            {
+                "file": "images/at_bw.png",
+                "name": "RT_AT_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/AE_BW.png",
+                "name": "RT_AE_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/Z_BW.png",
+                "name": "RT_Z_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/Y_BW.png",
+                "name": "RT_Y_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/X_BW.png",
+                "name": "RT_X_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/W_BW.png",
+                "name": "RT_W_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/V_BW.png",
+                "name": "RT_V_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/UE_BW.png",
+                "name": "RT_UE_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/U_BW.png",
+                "name": "RT_U_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/T_BW.png",
+                "name": "RT_T_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/SS_BW.png",
+                "name": "RT_SS_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/S_BW.png",
+                "name": "RT_S_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/R_BW.png",
+                "name": "RT_R_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/Q_BW.png",
+                "name": "RT_Q_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/P_BW.png",
+                "name": "RT_P_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/OE_BW.png",
+                "name": "RT_OE_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/O_BW.png",
+                "name": "RT_O_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/N_BW.png",
+                "name": "RT_N_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/M_BW.png",
+                "name": "RT_M_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/L_BW.png",
+                "name": "RT_L_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/K_BW.png",
+                "name": "RT_K_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/J_BW.png",
+                "name": "RT_J_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/I_BW.png",
+                "name": "RT_I_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/H_BW.png",
+                "name": "RT_H_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/G_BW.png",
+                "name": "RT_G_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/F_BW.png",
+                "name": "RT_F_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/E_BW.png",
+                "name": "RT_E_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/D_BW.png",
+                "name": "RT_D_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/circular_integral_BW.png",
+                "name": "RT_Circular_Integral_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/C_BW.png",
+                "name": "RT_C_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/B_BW.png",
+                "name": "RT_B_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/A_BW.png",
+                "name": "RT_A_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/9_BW.png",
+                "name": "RT_9_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/8_BW.png",
+                "name": "RT_8_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/7_BW.png",
+                "name": "RT_7_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/6_BW.png",
+                "name": "RT_6_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/5_BW.png",
+                "name": "RT_5_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/4_BW.png",
+                "name": "RT_4_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/3_BW.png",
+                "name": "RT_3_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/2_BW.png",
+                "name": "RT_2_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/1_BW.png",
+                "name": "RT_1_BW",
+                "type": "png"
+            },
+            {
+                "file": "images/0_BW.png",
+                "name": "RT_0_BW",
+                "type": "png"
+            },
             {
                 "file": "images/tesla-coil (1).png",
                 "name": "RT_TESLA_COIL",
@@ -228,7 +438,12 @@
             },
             {
                 "file": "fonts/hoog0553.ttf",
-                "name": "RT_FONT_24",
+                "name": "RT_FONT_10",
+                "type": "font"
+            },
+            {
+                "file": "fonts/hoog0553.ttf",
+                "name": "RT_FONT_26",
                 "type": "font"
             },
             {
@@ -238,7 +453,7 @@
             },
             {
                 "file": "fonts/hoog0553.ttf",
-                "name": "RT_FONT_26",
+                "name": "RT_FONT_24",
                 "type": "font"
             },
             {
@@ -249,9 +464,9 @@
         ]
     },
     "sdkVersion": "3",
-    "shortName": "RT42",
+    "shortName": "RT 42 Time",
     "targetPlatforms": [
-        "basalt"
+        "aplite"
     ],
     "uuid": "3d34284b-13a4-4961-81fb-d2ebe234410e",
     "versionLabel": "1.0",

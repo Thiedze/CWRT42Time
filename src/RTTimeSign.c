@@ -2,6 +2,8 @@
 #include "RTTimeSign.h"
 
 void init_rt_time_signs() {
+  
+#ifdef PBL_PLATFORM_BASALT
   rt_time_signs[0] = gbitmap_create_with_resource(RESOURCE_ID_RT_0);
   rt_time_signs[1] = gbitmap_create_with_resource(RESOURCE_ID_RT_1);
   rt_time_signs[2] = gbitmap_create_with_resource(RESOURCE_ID_RT_2);
@@ -46,6 +48,52 @@ void init_rt_time_signs() {
   rt_time_signs[39] = gbitmap_create_with_resource(RESOURCE_ID_RT_UE);
   rt_time_signs[40] = gbitmap_create_with_resource(RESOURCE_ID_RT_SS);
   rt_time_signs[41] = gbitmap_create_with_resource(RESOURCE_ID_RT_AT);
+#else
+  rt_time_signs[0] = gbitmap_create_with_resource(RESOURCE_ID_RT_0_BW);
+  rt_time_signs[1] = gbitmap_create_with_resource(RESOURCE_ID_RT_1_BW);
+  rt_time_signs[2] = gbitmap_create_with_resource(RESOURCE_ID_RT_2_BW);
+  rt_time_signs[3] = gbitmap_create_with_resource(RESOURCE_ID_RT_3_BW);
+  rt_time_signs[4] = gbitmap_create_with_resource(RESOURCE_ID_RT_4_BW);
+  rt_time_signs[5] = gbitmap_create_with_resource(RESOURCE_ID_RT_5_BW);
+  rt_time_signs[6] = gbitmap_create_with_resource(RESOURCE_ID_RT_6_BW);
+  rt_time_signs[7] = gbitmap_create_with_resource(RESOURCE_ID_RT_7_BW);
+  rt_time_signs[8] = gbitmap_create_with_resource(RESOURCE_ID_RT_8_BW);
+  rt_time_signs[9] = gbitmap_create_with_resource(RESOURCE_ID_RT_9_BW);
+  
+  rt_time_signs[10] = gbitmap_create_with_resource(RESOURCE_ID_RT_A_BW);
+  rt_time_signs[11] = gbitmap_create_with_resource(RESOURCE_ID_RT_B_BW);
+  rt_time_signs[12] = gbitmap_create_with_resource(RESOURCE_ID_RT_C_BW);
+  rt_time_signs[13] = gbitmap_create_with_resource(RESOURCE_ID_RT_D_BW);
+  rt_time_signs[14] = gbitmap_create_with_resource(RESOURCE_ID_RT_E_BW);
+  rt_time_signs[15] = gbitmap_create_with_resource(RESOURCE_ID_RT_F_BW);
+  rt_time_signs[16] = gbitmap_create_with_resource(RESOURCE_ID_RT_G_BW);
+  rt_time_signs[17] = gbitmap_create_with_resource(RESOURCE_ID_RT_H_BW);
+  rt_time_signs[18] = gbitmap_create_with_resource(RESOURCE_ID_RT_I_BW);
+  rt_time_signs[19] = gbitmap_create_with_resource(RESOURCE_ID_RT_J_BW);
+  rt_time_signs[20] = gbitmap_create_with_resource(RESOURCE_ID_RT_K_BW);
+  rt_time_signs[21] = gbitmap_create_with_resource(RESOURCE_ID_RT_L_BW);
+  rt_time_signs[22] = gbitmap_create_with_resource(RESOURCE_ID_RT_M_BW);
+  rt_time_signs[23] = gbitmap_create_with_resource(RESOURCE_ID_RT_N_BW);
+  rt_time_signs[24] = gbitmap_create_with_resource(RESOURCE_ID_RT_O_BW);
+  rt_time_signs[25] = gbitmap_create_with_resource(RESOURCE_ID_RT_P_BW);
+  rt_time_signs[26] = gbitmap_create_with_resource(RESOURCE_ID_RT_Q_BW);
+  rt_time_signs[27] = gbitmap_create_with_resource(RESOURCE_ID_RT_R_BW);
+  rt_time_signs[28] = gbitmap_create_with_resource(RESOURCE_ID_RT_S_BW);
+  rt_time_signs[29] = gbitmap_create_with_resource(RESOURCE_ID_RT_T_BW);
+  rt_time_signs[30] = gbitmap_create_with_resource(RESOURCE_ID_RT_U_BW);
+  rt_time_signs[31] = gbitmap_create_with_resource(RESOURCE_ID_RT_V_BW);
+  rt_time_signs[32] = gbitmap_create_with_resource(RESOURCE_ID_RT_W_BW);
+  rt_time_signs[33] = gbitmap_create_with_resource(RESOURCE_ID_RT_X_BW);
+  rt_time_signs[34] = gbitmap_create_with_resource(RESOURCE_ID_RT_Y_BW);
+  rt_time_signs[35] = gbitmap_create_with_resource(RESOURCE_ID_RT_Z_BW);
+  
+  rt_time_signs[36] = gbitmap_create_with_resource(RESOURCE_ID_RT_Circular_Integral_BW);
+  rt_time_signs[37] = gbitmap_create_with_resource(RESOURCE_ID_RT_AE_BW);
+  rt_time_signs[38] = gbitmap_create_with_resource(RESOURCE_ID_RT_OE_BW);
+  rt_time_signs[39] = gbitmap_create_with_resource(RESOURCE_ID_RT_UE_BW);
+  rt_time_signs[40] = gbitmap_create_with_resource(RESOURCE_ID_RT_SS_BW);
+  rt_time_signs[41] = gbitmap_create_with_resource(RESOURCE_ID_RT_AT_BW);
+#endif
 }
 
 void destroy_rt_time_signs() {

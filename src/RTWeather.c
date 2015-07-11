@@ -10,7 +10,7 @@ void init_weather_layer(Window *main_window) {
 #ifdef PBL_PLATFORM_BASALT
   text_layer_set_text_color(weather_layer, RTColor);
 #else
-  text_layer_set_text_color(weather_layer, GColorBlack);
+  text_layer_set_text_color(weather_layer, GColorWhite);
 #endif
   
   layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(weather_layer));

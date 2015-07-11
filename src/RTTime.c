@@ -35,7 +35,7 @@ void main_window_load(Window *window) {
   init_fonts();
   set_and_add_background();
   
-  init_bluetooth_layer(main_window);
+  init_bluetooth_layer(main_window, last_connection_status);
   init_normal_time_and_date_layers(main_window);
   
   if (USE_TIME_LAYER == 1) {
@@ -82,6 +82,7 @@ void init_main_window() {
     .unload = main_window_unload
   });
 
+  last_connection_status = bluetooth_connection_service_peek();
   window_stack_push(main_window, true);
 }
 
