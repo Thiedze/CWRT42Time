@@ -12,6 +12,11 @@
     "resources": {
         "media": [
             {
+                "file": "images/Tesla_Coil.png",
+                "name": "RT_APLITE_BATTERY",
+                "type": "png"
+            },
+            {
                 "file": "images/Tesla_Coil_2.png",
                 "name": "RT_BATTERY_2",
                 "type": "png"
@@ -510,7 +515,7 @@
         "basalt"
     ],
     "uuid": "3d34284b-13a4-4961-81fb-d2ebe234410e",
-    "versionLabel": "1.0",
+    "versionLabel": "1.1",
     "watchapp": {
         "watchface": true
     }

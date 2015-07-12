@@ -58,7 +58,10 @@ void main_window_load(Window *window) {
   
   update_bluetooth_layer();
   update_normal_time_and_date_layers();
+  
+#ifdef PBL_PLATFORM_BASALT
   update_battery_layer();
+#endif
 }
 
 void main_window_unload(Window *window) {
@@ -102,7 +105,10 @@ void init(void) {
   app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
   
   bluetooth_connection_service_subscribe(bluetooth_callback);  
+  
+#ifdef PBL_PLATFORM_BASALT
   battery_state_service_subscribe(battery_callback);
+#endif
 }
  
 void deinit(void) {

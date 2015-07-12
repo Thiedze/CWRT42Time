@@ -2,7 +2,7 @@
 #include <pebble.h>
   
 BitmapLayer *battery_layer;
-GBitmap *battery_bitmap[10];
+GBitmap *battery_bitmap[11];
   
 extern void battery_callback(BatteryChargeState battery_charge_state);
 extern void init_battery_layer(Window *main_window);
