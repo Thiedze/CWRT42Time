@@ -6,11 +6,11 @@ static char time_buffer[] = "00:00";
 static char date_buffer[] = "00.00.0000";
  
 void init_normal_date_layer(Window *main_window) {
-  date_layer = text_layer_create(GRect(3, 57, 60, 20));
+  date_layer = text_layer_create(GRect(5, 52, 60, 20));
   text_layer_set_text_color(date_layer, GColorBlack);
   text_layer_set_background_color(date_layer, GColorClear);
   text_layer_set_text(date_layer, time_buffer);
-  text_layer_set_font(date_layer, rt_font_10);
+  //text_layer_set_font(date_layer, rt_font_10);
   
   layer_add_child(window_get_root_layer(main_window), text_layer_get_layer(date_layer));
 }

@@ -22,13 +22,11 @@ void bluetooth_callback(bool connected) {
   else if (last_connection_status != connected)
     vibes_enqueue_custom_pattern(bluetooth_disconnect_pattern);
   
-  last_connection_status = connected;  
-  APP_LOG(APP_LOG_LEVEL_INFO, connected ? "connected" : "disconnected");
+  last_connection_status = connected;
 }
 
 void init_bluetooth_layer(Window *main_window, bool connection_status) {
-  APP_LOG(APP_LOG_LEVEL_INFO, "init_bluetooth_layer");
-  bluetooth_bitmap = gbitmap_create_with_resource(RESOURCE_ID_RT_TESLA_COIL);
+  bluetooth_bitmap = gbitmap_create_with_resource(RESOURCE_ID_RT_TESLA_COIL_BLUETOOTH);
   bluetooth_layer = bitmap_layer_create(GRect(1, 75, 30, 30));
   bitmap_layer_set_bitmap(bluetooth_layer, bluetooth_bitmap);
   bitmap_layer_set_background_color(bluetooth_layer, GColorClear);

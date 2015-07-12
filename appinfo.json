@@ -12,6 +12,51 @@
     "resources": {
         "media": [
             {
+                "file": "images/Tesla_Coil_2.png",
+                "name": "RT_BATTERY_2",
+                "type": "png"
+            },
+            {
+                "file": "images/Tesla_Coil_3.png",
+                "name": "RT_BATTERY_3",
+                "type": "png"
+            },
+            {
+                "file": "images/Tesla_Coil_4.png",
+                "name": "RT_BATTERY_4",
+                "type": "png"
+            },
+            {
+                "file": "images/Tesla_Coil_5.png",
+                "name": "RT_BATTERY_5",
+                "type": "png"
+            },
+            {
+                "file": "images/Tesla_Coil_6.png",
+                "name": "RT_BATTERY_6",
+                "type": "png"
+            },
+            {
+                "file": "images/Tesla_Coil_7.png",
+                "name": "RT_BATTERY_7",
+                "type": "png"
+            },
+            {
+                "file": "images/Tesla_Coil_8.png",
+                "name": "RT_BATTERY_8",
+                "type": "png"
+            },
+            {
+                "file": "images/Tesla_Coil_9.png",
+                "name": "RT_BATTERY_9",
+                "type": "png"
+            },
+            {
+                "file": "images/Tesla_Coil_Bluetooth.png",
+                "name": "RT_TESLA_COIL_BLUETOOTH",
+                "type": "png"
+            },
+            {
                 "file": "images/at_bw.png",
                 "name": "RT_AT_BW",
                 "type": "png"
@@ -219,11 +264,6 @@
             {
                 "file": "images/0_BW.png",
                 "name": "RT_0_BW",
-                "type": "png"
-            },
-            {
-                "file": "images/tesla-coil (1).png",
-                "name": "RT_TESLA_COIL",
                 "type": "png"
             },
             {
@@ -466,7 +506,8 @@
     "sdkVersion": "3",
     "shortName": "RT 42 Time",
     "targetPlatforms": [
-        "aplite"
+        "aplite",
+        "basalt"
     ],
     "uuid": "3d34284b-13a4-4961-81fb-d2ebe234410e",
     "versionLabel": "1.0",

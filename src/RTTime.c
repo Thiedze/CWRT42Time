@@ -5,7 +5,9 @@
 #include "RTTimeLayer.h"
 #include "RTNormalTime.h"
 #include "RTBluetooth.h"
+#include "RTBattery.h"
 #include "RTFonts.h"
+
   
 void ticker_rt_42_time(struct tm *tick_time, TimeUnits units_changed) {
   if (USE_TIME_LAYER == 1)
@@ -36,6 +38,7 @@ void main_window_load(Window *window) {
   set_and_add_background();
   
   init_bluetooth_layer(main_window, last_connection_status);
+  init_battery_layer(main_window);
   init_normal_time_and_date_layers(main_window);
   
   if (USE_TIME_LAYER == 1) {
@@ -55,6 +58,7 @@ void main_window_load(Window *window) {
   
   update_bluetooth_layer();
   update_normal_time_and_date_layers();
+  update_battery_layer();
 }
 
 void main_window_unload(Window *window) {
@@ -73,6 +77,7 @@ void main_window_unload(Window *window) {
   destroy_normal_time_and_date_layers();
   destroy_weather_layer();
   destroy_bluetooth_layer();
+  destroy_battery_layer();
 }
 
 void init_main_window() {
@@ -97,6 +102,7 @@ void init(void) {
   app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
   
   bluetooth_connection_service_subscribe(bluetooth_callback);  
+  battery_state_service_subscribe(battery_callback);
 }
  
 void deinit(void) {
