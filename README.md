@@ -1,3 +1,3 @@
 # CWRT42Time
 
-Look at http://42volt.de/?page_id=34
+Look at http://42volt.de/?page_id=835
